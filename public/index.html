@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f6f7f8">
+    <title>College requirements</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <a class="brand" href="/" aria-label="Campus Index home">
+          <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+          <span>campus<span class="brand-light">index</span></span>
+        </a>
+        <span class="team-label"><span class="status-dot"></span> TEAM WORKSPACE</span>
+      </header>
+
+      <section class="intro">
+        <div class="eyebrow"><span class="eyebrow-line"></span> ADMISSIONS RESEARCH</div>
+        <h1>Every requirement,<br><span>in one place.</span></h1>
+        <p class="intro-copy">A shared reference for college entry requirements.<br>Keep the details clear, current, and easy to find.</p>
+      </section>
+
+      <section class="data-card" aria-labelledby="table-title">
+        <div class="card-heading">
+          <div>
+            <div class="section-kicker">YOUR DATABASE</div>
+            <h2 id="table-title">College requirements <span id="row-count" class="count-badge">0</span></h2>
+          </div>
+          <button class="primary-button" id="add-button" type="button"><span class="plus-icon" aria-hidden="true">+</span> Add college</button>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th scope="col">COUNTRY</th><th scope="col">COLLEGE</th><th scope="col">IGCSE NEEDED</th><th scope="col"><span class="sr-only">Actions</span></th></tr></thead>
+            <tbody id="college-rows"></tbody>
+          </table>
+          <div class="empty-state" id="empty-state" hidden>
+            <span class="empty-icon" aria-hidden="true">↗</span>
+            <strong>Your list starts here.</strong>
+            <span>Add a college and its IGCSE requirements to get started.</span>
+            <button class="text-button" id="empty-add-button" type="button">Add your first college <span aria-hidden="true">→</span></button>
+          </div>
+        </div>
+        <footer class="card-footer"><span><span class="footer-dot"></span> Changes are shared with your team</span><span id="updated-label">Ready when you are</span></footer>
+      </section>
+
+      <footer class="page-footer"><span>BUILT FOR CLEARER CHOICES</span><span>YOUR RESEARCH, ORGANIZED.</span></footer>
+    </main>
+
+    <dialog id="college-dialog" aria-labelledby="dialog-title">
+      <form id="college-form">
+        <div class="dialog-top"><div><div class="section-kicker">COLLEGE DETAILS</div><h2 id="dialog-title">Add a college</h2></div><button class="icon-button close-button" type="button" id="close-dialog" aria-label="Close dialog">×</button></div>
+        <label for="country">Country <span>*</span><input id="country" name="country" maxlength="100" placeholder="e.g. United Kingdom" required></label>
+        <label for="college">College <span>*</span><input id="college" name="college" maxlength="160" placeholder="e.g. University of Edinburgh" required></label>
+        <label for="igcse-needed">IGCSE needed <span>*</span><textarea id="igcse-needed" name="igcseNeeded" maxlength="500" rows="3" placeholder="e.g. 5 subjects at grade 6 or above, including English and Maths" required></textarea></label>
+        <p class="form-error" id="form-error" role="alert" hidden></p>
+        <div class="dialog-actions"><button class="secondary-button" type="button" id="cancel-dialog">Cancel</button><button class="primary-button" type="submit" id="save-button">Save college <span aria-hidden="true">→</span></button></div>
+      </form>
+    </dialog>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
