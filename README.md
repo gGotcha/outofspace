@@ -1,22 +1,25 @@
 # Campus Index
 
-A small, single-page app for keeping a shared list of colleges and their IGCSE requirements. It uses Express for the API and SQLite for storage.
+A small, single-page app for keeping a shared list of colleges and their IGCSE requirements. It uses Python, Flask, and SQLite.
 
 ## Run locally
 
-Requires Node.js 20 or newer.
+Requires Python 3.10 or newer.
 
 ```sh
-npm install
-npm run dev
+python -m venv .venv
+# Windows PowerShell: .venv\Scripts\Activate.ps1
+# macOS/Linux: source .venv/bin/activate
+python -m pip install -r requirements.txt
+python app.py
 ```
 
-Open <http://localhost:3000>. The database is created automatically at `data/colleges.sqlite`. To use another path, set `DATABASE_PATH`; the server uses `PORT` when provided by the host.
+Open <http://localhost:3000>. The database is created automatically at `data/colleges.sqlite`. Set `DATABASE_PATH` to use another location; the server uses `PORT` when provided by a host.
 
 ## Deploy to Railway from GitHub
 
-1. Push this repository to GitHub and connect the repository to a new Railway project.
-2. Railway detects `railway.json` and builds the app with Nixpacks.
+1. Connect this GitHub repository to a new Railway project.
+2. Railway installs dependencies from `requirements.txt` and starts the Flask app with Gunicorn.
 3. Add a Railway **Volume** to the app service and mount it at `/data`.
 4. Set the service variable `DATABASE_PATH=/data/colleges.sqlite` and generate a public domain.
 
